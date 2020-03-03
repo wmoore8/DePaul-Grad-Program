@@ -67,9 +67,9 @@ import java.text.*;
 //Server Imports
 
 /*TODO:
-        1. Continue with checklist
-        2. Explain comments and elaborate more
-        3. Make header
+        1. Get gson to work, maybe try the 2.8.2 one included...
+        2. Separate read in and write out since P0 is only one writing
+        3. Multicast a message from each process to each other
      */
 
 public class Blockchain {
@@ -137,9 +137,12 @@ class startProcess implements Runnable {
         }
     }
 
+    /*This process is in charge of writing the information to BlockchainLedger.json. */
+
     public void startP0() {
 
         fileName = "BlockInput0.txt";
+//        createChain(processNumber);
 
         System.out.println("Hello from Process " + processNumber + "! :-)");
 
@@ -154,6 +157,7 @@ class startProcess implements Runnable {
     public void startP1() {
 
         fileName = "BlockInput1.txt";
+//        createChain(processNumber);
 
         System.out.println("Hello from Process " + processNumber + "! :-)");
 
@@ -184,6 +188,7 @@ class startProcess implements Runnable {
     public void startP2() {
 
         fileName = "BlockInput2.txt";
+//        createChain(processNumber);
 
         System.out.println("Hello from Process " + processNumber + "! :-)");
 
@@ -195,18 +200,27 @@ class startProcess implements Runnable {
 
     }
 
-    private static void createChain() {
-        Block b1 = new Block("JohnSmithInfo", "0");
-        blockchain.add(b1);
+    /*TODO: Add this method to readBlockInputFile method
+        Need way to reference block before it or state if it's first block on chain
+    *  SEE: General, second bullet point*/
 
-        Block b2 = new Block("JoeBlowInfo", blockchain.get(blockchain.size()-1).getCurrentHash());
-        blockchain.add(b2);
+    private Block createBlock(Block previousBlock, ArrayList<Block> blockchain) {
 
-        Block b3 = new Block("JulieWilsonInfo", blockchain.get(blockchain.size()-1).getCurrentHash());
-        blockchain.add(b3);
+        String prevHash;
+        int count;
 
-        Block b4 = new Block("WayneBlaineInfo", blockchain.get(blockchain.size()-1).getCurrentHash());
-        blockchain.add(b4);
+        /*Decide what the previous hash is, sort of a base case for an empty blockchain*/
+
+        if(blockchain.size() == 0 || previousBlock == null) {
+            prevHash = "0";
+        } else {
+            prevHash = previousBlock.getCurrentHash();
+        }
+
+        Block blockToReturn = new Block(prevHash);
+        blockchain.add(blockToReturn);
+
+        return blockToReturn;
     }
 
     /*TODO COMMENT: How I got this code? Link source? Explain it in depth*/
@@ -227,7 +241,7 @@ class startProcess implements Runnable {
       https://dzone.com/articles/a-simplest-block-chain-in-java
       */
 
-    private static boolean validate(ArrayList<Block> chainToCheck) {
+    private boolean validate(ArrayList<Block> chainToCheck) {
 
         Block currentBlock;
         Block previousBlock = null;
@@ -270,16 +284,11 @@ class startProcess implements Runnable {
      * TODO: Investigate ways to make the chain dynamic in regards to JSON size
      * TODO: This information will then write to disk in JSON format*/
 
-    private static void readBlockInputFile(String fileToRead, String processNumber, ArrayList<Block> myBlockchain) throws Exception {
-
-        //Should be of size 4 given our input .txt files
-        int blockchainSize = myBlockchain.size();
+    private void readBlockInputFile(String fileToRead, String processNumber, ArrayList<Block> myBlockchain) throws Exception {
 
         StringWriter sw = new StringWriter();
         String[] tokens = new String[10];
         String line;
-
-
 
         //Print statement check
 
@@ -287,12 +296,29 @@ class startProcess implements Runnable {
 
         try {
 
+            //Keep track of our position in the blockchain when reading information into blocks
+
             int blockFromChainIndex = 0;
             BufferedReader br = new BufferedReader(new FileReader(fileToRead));
 
             while((line = br.readLine()) != null) {
 
-                Block myBlock = myBlockchain.get(blockFromChainIndex);
+                /*TODO: So this already assumes blocks to be created inside blockchain, I need to call createBlock() instead
+                *  and pass in the myBlockchain parameter. I do this because while there are lines to read, a new block
+                *  must be created and appended to the blockchain. What do I pass in for previous block parameter?
+                *  I might have to change a thing or two so that when blockFromChainIndex is 0, the previous block is null
+                *  and add that functionality to my createBlock() that if it's null, it's the first block.
+                *
+                *TODO: TEST THE FOLLOWING CHANGE: */
+                
+//                Block myBlock = myBlockchain.get(blockFromChainIndex);
+                Block myBlock;
+
+                if (blockFromChainIndex == 0) {
+                    myBlock = createBlock(null, myBlockchain);
+                } else {
+                    myBlock = createBlock(myBlockchain.get(blockFromChainIndex - 1), myBlockchain);
+                }
 
                 /*Waits a second in between each line of the text file being read. Why? In order to try and ensure
                  * different time stamps between each block.
@@ -354,7 +380,7 @@ class startProcess implements Runnable {
 
         try (FileWriter writer = new FileWriter("BlockchainLedger.json")){
             gson.toJson(blockchain, writer);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -368,7 +394,6 @@ class Block {
 
     //Data fields for public information relating to block
 
-    public String title;
     private String blockUUID;
 
     //Data fields for blockchain-specific information
@@ -396,14 +421,13 @@ class Block {
 
      */
 
-    public Block(String blockTitle, String prevHash) {
-        this.title = blockTitle;
+    public Block(String prevHash) {
         this.previousHash = prevHash;
 
         //Automatically create hash for block using SHA-256 hashing by concatenating the three necessary pieces of information
 
         try {
-            this.currentHash = hashSHA256((new Integer(Arrays.hashCode(new String[]{title, previousHash, randomStringR}))).toString());
+            this.currentHash = hashSHA256((new Integer(Arrays.hashCode(new String[]{previousHash, randomStringR}))).toString());
         } catch (NoSuchAlgorithmException e) {
             System.err.println("Creating SHA-256 hash failed: " + e);
         }
