@@ -3,9 +3,13 @@
 Version 2.1 2020-02-10, Fixed compile warning.
 
 To compile and run:
+    1. In terminal, cd to Blockchain folder
+    2. javac -cp "gson-2.8.6.jar" Blockchain.java
+    (On three separate terminal windows)
+    3. java Blockchain 0
+    4. java Blockchain 1
+    5. java Blockchain 2
 
-javac -cp "gson-2.8.2.jar" Blockchain.java
-java -cp ".;gson-2.8.2.jar" BlockInput
 
 SOURCES:
 
@@ -63,55 +67,135 @@ import java.text.*;
 //Server Imports
 
 /*TODO:
-        1. Part c (save and upload to github before starting)
+        1. Continue with checklist
+        2. Explain comments and elaborate more
+        3. Make header
      */
 
 public class Blockchain {
-
-    private static String FILENAME;
-
-    /*blockChain ArrayList is the initial list we add our blocks to. Once that is ready
-    //TODO: (and the blocks have been verified?)
-     we will add them to the blockPriorityQueue */
-
-    Queue<Block> blockPriorityQueue = new PriorityQueue<>(4,BlockTSComparator);
-    static ArrayList<Block> blockchain = new ArrayList<>();
 
     public static void main(String[] args) {
 
         if (args.length != 1) {
 
-            startP1();
-//            System.err.println("Please specify exactly one process: P0, P1, or P2\nPlease remember to start P2 last!");
+            System.err.println("Please specify exactly one process: 0, 1, or 2\nPlease remember to start 2 last!");
 
         } else {
 
             String processToRun = args[0];
 
             switch(processToRun) {
-                case "P0":
-                    startP0();
+                case "0":
+                    new startProcess("0").run();
                     break;
-
-                case "P1":
-                    startP1();
+                case "1":
+                    new startProcess("1").run();
                     break;
-
-                case "P2":
-                    startP2();
+                case "2":
+                    new startProcess("2").run();
                     break;
-
                 default:
-                    System.err.println("Please specify exactly one process: P0, P1, or P2\nPlease remember to start P2 last!");
+                    System.err.println("Please specify exactly one process: 0, 1, or 2\nPlease remember to start 2 last!");
+                    break;
             }
         }
     }
 
-    public static void startP0() {
+}
+
+class startProcess implements Runnable {
+
+    private String processNumber;
+    private String fileName;
+
+    /*blockChain ArrayList is the initial list we add our blocks to. Once that is ready
+     we will add them to the blockPriorityQueue */
+
+    Queue<Block> blockPriorityQueue = new PriorityQueue<>(4, BlockTSComparator);
+    static ArrayList<Block> blockchain = new ArrayList<>();
+
+    public startProcess(String process) {
+        this.processNumber = process;
+    }
+
+    //Starts the process based off the argument given in main()
+    @Override
+    public void run() {
+        switch(processNumber) {
+            case "0":
+                startP0();
+                break;
+            case "1":
+                startP1();
+                break;
+            case "2":
+                startP2();
+                break;
+            default:
+                System.err.println("Please specify exactly one process: 0, 1, or 2\nPlease remember to start 2 last!");
+                break;
+        }
+    }
+
+    public void startP0() {
+
+        fileName = "BlockInput0.txt";
+
+        System.out.println("Hello from Process " + processNumber + "! :-)");
+
+        try {
+            readBlockInputFile(fileName, processNumber, blockchain);
+        } catch (Exception e) {
+            System.err.println("JSON Read-in failed: " + e);
+        }
 
     }
 
-    public static void startP1() {
+    public void startP1() {
+
+        fileName = "BlockInput1.txt";
+
+        System.out.println("Hello from Process " + processNumber + "! :-)");
+
+        try {
+            readBlockInputFile(fileName, processNumber, blockchain);
+        } catch (Exception e) {
+            System.err.println("JSON Read-in failed: " + e);
+        }
+//        for (int i = 0; i < blockchain.size(); i++) {
+//            Block block = blockchain.get(i);
+//            System.out.println("Block " + block.title +
+//                                ":\nPrevious Hash: " + block.getPreviousHash() +
+//                                "\nCurrent Hash: " + block.getCurrentHash() +
+//                                "\nRandom String R: " + block.getRandomStringR() +
+//                                "\nUUID: " + block.getBlockUUID() +
+//                                "\nTime Stamp: " + block.getTimeStamp() +
+//                                "\nFirst Name: " + block.getFirstName() +
+//                                "\nLast Name: " + block.getLastName() +
+//                                "\nDOB: " + block.getDOB() +
+//                                "\nSocial Security: " + block.getSocialSecurity() +
+//                                "\nDiagnosis: " + block.getDiagnosis() +
+//                                "\nTreatment: " + block.getTreatment() +
+//                                "\nPrescription: " + block.getPrescription() +
+//                                "\nValidation Check: " + validate(blockchain));
+//        }
+    }
+
+    public void startP2() {
+
+        fileName = "BlockInput2.txt";
+
+        System.out.println("Hello from Process " + processNumber + "! :-)");
+
+        try {
+            readBlockInputFile(fileName, processNumber, blockchain);
+        } catch (Exception e) {
+            System.err.println("JSON Read-in failed: " + e);
+        }
+
+    }
+
+    private static void createChain() {
         Block b1 = new Block("JohnSmithInfo", "0");
         blockchain.add(b1);
 
@@ -123,41 +207,9 @@ public class Blockchain {
 
         Block b4 = new Block("WayneBlaineInfo", blockchain.get(blockchain.size()-1).getCurrentHash());
         blockchain.add(b4);
-
-        try {
-            readBlockInputFile("BlockInput0.txt", "1", blockchain);
-        } catch (Exception e) {
-            System.err.println("JSON Read-in failed: " + e);
-        }
-
-        for (int i = 0; i < blockchain.size(); i++) {
-            Block block = blockchain.get(i);
-            System.out.println("Block " + block.jsonInfoTEMP +
-                                ":\nPrevious Hash: " + block.getPreviousHash() +
-                                "\nCurrent Hash: " + block.getCurrentHash() +
-                                "\nRandom String R: " + block.getRandomStringR() +
-                                "\nUUID: " + block.getBlockUUID() +
-                                "\nTime Stamp: " + block.getTimeStamp() +
-                                "\nFirst Name: " + block.getFirstName() +
-                                "\nLast Name: " + block.getLastName() +
-                                "\nDOB: " + block.getDOB() +
-                                "\nSocial Security: " + block.getSocialSecurity() +
-                                "\nDiagnosis: " + block.getDiagnosis() +
-                                "\nTreatment: " + block.getTreatment() +
-                                "\nPrescription: " + block.getPrescription() +
-                                "\nValidation Check: " + validate(blockchain));
-        }
-
     }
 
-    public static void startP2() {
-
-    }
-
-    /*This validation check is based off the validate function from this website. I added my own variations to it
-      based off the assignment requirements.
-      https://dzone.com/articles/a-simplest-block-chain-in-java
-      */
+    /*TODO COMMENT: How I got this code? Link source? Explain it in depth*/
 
     private static Comparator<Block> BlockTSComparator = new Comparator<Block>() {
         @Override
@@ -169,6 +221,11 @@ public class Blockchain {
 
         }
     };
+
+    /*This validation check is based off the validate function from this website. I added my own variations to it
+      based off the assignment requirements.
+      https://dzone.com/articles/a-simplest-block-chain-in-java
+      */
 
     private static boolean validate(ArrayList<Block> chainToCheck) {
 
@@ -204,14 +261,14 @@ public class Blockchain {
     }
 
     /*This class handles everything about reading in JSON information and writing it out.
-    * Code utilized from https://condor.depaul.edu/~elliott/435/hw/programs/Blockchain/BlockInputG.java
-    * with my own comments and alterations
-    *
-    * I've altered this function to take each block in the blockchain ArrayList and populate the blocks with the
-    * necessary information about the patient. As of right now, it has only been tested when the json and the blockchain
-    * match in size (that size being 4 currently).
-    * TODO: Investigate ways to make the chain dynamic in regards to JSON size
-    * TODO: This information will then write to disk in JSON format*/
+     * Code utilized from https://condor.depaul.edu/~elliott/435/hw/programs/Blockchain/BlockInputG.java
+     * with my own comments and alterations
+     *
+     * I've altered this function to take each block in the blockchain ArrayList and populate the blocks with the
+     * necessary information about the patient. As of right now, it has only been tested when the json and the blockchain
+     * match in size (that size being 4 currently).
+     * TODO: Investigate ways to make the chain dynamic in regards to JSON size
+     * TODO: This information will then write to disk in JSON format*/
 
     private static void readBlockInputFile(String fileToRead, String processNumber, ArrayList<Block> myBlockchain) throws Exception {
 
@@ -237,7 +294,9 @@ public class Blockchain {
 
                 Block myBlock = myBlockchain.get(blockFromChainIndex);
 
-                /*Waits a second in between each line of the text file being read. Why? I'm actually not sure. */
+                /*Waits a second in between each line of the text file being read. Why? In order to try and ensure
+                 * different time stamps between each block.
+                 * TODO: Can probably be omitted when we do "work" */
 
                 try {
                     Thread.sleep(1001);
@@ -246,10 +305,10 @@ public class Blockchain {
                 }
 
                 /*This part has been sectioned of to create a timestamp because of it's complexity relative to the
-                * rest of the readable information*/
+                 * rest of the readable information*/
 
                 Date date = new Date();
-                String timeStamp = String.format("%1$s %2$tF.%%2$tT", "", date);
+                String timeStamp = String.format("%1$s %2$tF.%2$tT", "", date);
                 /*Avoids timestamp collisions in the miraculous case that the timestamps are the exact same.
                   Doesn't this mean I don't need the equals operator in the comparator? */
                 myBlock.setTimeStamp(timeStamp.concat("." + processNumber));
@@ -260,7 +319,7 @@ public class Blockchain {
 
                 /*This section creates a UUID for each block, and then adds all fields of important data to the block*/
 
-                String uuid = new String(UUID.randomUUID().toString());
+                String uuid = UUID.randomUUID().toString();
                 myBlock.setBlockUUID(uuid);
 
                 /*Rest of the fields (firstName, lastName, etc.) using the tokens array initialized earlier
@@ -284,7 +343,24 @@ public class Blockchain {
             System.err.println("JSON read failed: " + e);
         }
 
+        //Now we write information to the JSON
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(blockchain);
+
+        //Print check statement
+
+        System.out.println("String list is: " + json);
+
+        try (FileWriter writer = new FileWriter("BlockchainLedger.json")){
+            gson.toJson(blockchain, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
+
 
 }
 
@@ -292,7 +368,7 @@ class Block {
 
     //Data fields for public information relating to block
 
-    public String jsonInfoTEMP;
+    public String title;
     private String blockUUID;
 
     //Data fields for blockchain-specific information
@@ -320,14 +396,14 @@ class Block {
 
      */
 
-    public Block(String data, String prevHash) {
-        this.jsonInfoTEMP = data;
+    public Block(String blockTitle, String prevHash) {
+        this.title = blockTitle;
         this.previousHash = prevHash;
 
         //Automatically create hash for block using SHA-256 hashing by concatenating the three necessary pieces of information
 
         try {
-            this.currentHash = hashSHA256((new Integer(Arrays.hashCode(new String[]{jsonInfoTEMP, previousHash, randomStringR}))).toString());
+            this.currentHash = hashSHA256((new Integer(Arrays.hashCode(new String[]{title, previousHash, randomStringR}))).toString());
         } catch (NoSuchAlgorithmException e) {
             System.err.println("Creating SHA-256 hash failed: " + e);
         }
