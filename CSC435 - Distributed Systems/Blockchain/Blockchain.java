@@ -215,8 +215,8 @@ class startProcess implements Runnable {
         @Override
         public int compare(Block b1, Block b2){
             if (b1.getTimeStamp().equals(b2.getTimeStamp())) {return 0;}
-            if (b1.getTimeStamp() == null) {return 0;}
-            if (b2.getTimeStamp() == null) {return 0;}
+            if (b1.getTimeStamp() == null) {return -1;}
+            if (b2.getTimeStamp() == null) {return 1;}
             return b1.getTimeStamp().compareTo(b2.getTimeStamp());
 
         }
