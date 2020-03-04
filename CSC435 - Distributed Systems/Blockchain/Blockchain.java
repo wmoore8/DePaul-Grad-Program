@@ -2,13 +2,26 @@
 
 Version 2.1 2020-02-10, Fixed compile warning.
 
-To compile and run:
+To compile and run on WINDOWS:
     1. In terminal, cd to Blockchain folder
-    2. javac -cp "gson-2.8.6.jar" Blockchain.java
-    (On three separate terminal windows)
-    3. java Blockchain 0
-    4. java Blockchain 1
-    5. java Blockchain 2
+
+    2. javac -cp ".;gson-2.8.2.jar" Blockchain.java
+
+        (On three separate terminal windows)
+    3. java -cp ".;gson-2.8.2.jar" Blockchain 0
+    4. java -cp ".;gson-2.8.2.jar" Blockchain 1
+    5. java -cp ".;gson-2.8.2.jar" Blockchain 2
+
+
+To compile and run on MAC:
+    1. In terminal, cd to Blockchain folder
+
+    2. javac -cp ".:gson-2.8.2.jar" Blockchain.java
+
+        (On three separate terminal windows)
+    3. java -cp ".:gson-2.8.2.jar" -Djava.net.preferIPv4Stack=true Blockchain 0
+    4. java -cp ".:gson-2.8.2.jar" -Djava.net.preferIPv4Stack=true Blockchain 1
+    5. java -cp ".:gson-2.8.2.jar" -Djava.net.preferIPv4Stack=true Blockchain 2
 
 
 SOURCES:
@@ -36,8 +49,9 @@ https://www.geeksforgeeks.org/sha-256-hash-in-java/
     |
     Learning about SHA-256 hashing as opposed to a regular hash in Java
 
-
-
+https://www.developer.com/java/data/how-to-multicast-using-java-sockets.html
+    |
+    Reference for learning about multi-casting.
 
 -----------------------------------------------------------------------*/
 //JSON/Gson Imports
@@ -66,10 +80,16 @@ import java.text.*;
 
 //Server Imports
 
+import java.net.Socket;
+import java.net.ServerSocket;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.MulticastSocket;
+import java.net.InetAddress;
+
 /*TODO:
-        1. Get gson to work, maybe try the 2.8.2 one included...
-        2. Separate read in and write out since P0 is only one writing
-        3. Multicast a message from each process to each other
+        1. Multicast a message from each process to each other
      */
 
 public class Blockchain {
@@ -86,13 +106,13 @@ public class Blockchain {
 
             switch(processToRun) {
                 case "0":
-                    new startProcess("0").run();
+                    new startProcess("0").start();
                     break;
                 case "1":
-                    new startProcess("1").run();
+                    new startProcess("1").start();
                     break;
                 case "2":
-                    new startProcess("2").run();
+                    new startProcess("2").start();
                     break;
                 default:
                     System.err.println("Please specify exactly one process: 0, 1, or 2\nPlease remember to start 2 last!");
@@ -103,10 +123,12 @@ public class Blockchain {
 
 }
 
-class startProcess implements Runnable {
+class startProcess extends Thread {
 
     private String processNumber;
     private String fileName;
+
+    private String ipAddress = "239.0.0.0";
 
     /*blockChain ArrayList is the initial list we add our blocks to. Once that is ready
      we will add them to the blockPriorityQueue */
@@ -142,14 +164,30 @@ class startProcess implements Runnable {
     public void startP0() {
 
         fileName = "BlockInput0.txt";
-//        createChain(processNumber);
 
         System.out.println("Hello from Process " + processNumber + "! :-)");
 
         try {
             readBlockInputFile(fileName, processNumber, blockchain);
+
+            Thread.sleep(2000);
+
+            //writeBlockOutputFile(blockchain);
+
+            MulticastServer.multicastMessage("*** *** *** HI FROM PROCESS " + processNumber + "! *** *** ***",5040);
+            MulticastServer.multicastMessage("end", 5040);
+
+            Thread.sleep(2000);
+
+            receiveMulticastMessage(5040, "end");
+
+            Thread.sleep(2000);
+
+            receiveMulticastMessage(5040, "end");
+
+
         } catch (Exception e) {
-            System.err.println("JSON Read-in failed: " + e);
+            System.err.println("Process 0 failed: " + e);
         }
 
     }
@@ -157,14 +195,25 @@ class startProcess implements Runnable {
     public void startP1() {
 
         fileName = "BlockInput1.txt";
-//        createChain(processNumber);
 
         System.out.println("Hello from Process " + processNumber + "! :-)");
 
         try {
             readBlockInputFile(fileName, processNumber, blockchain);
+
+            receiveMulticastMessage(5040, "end");
+
+            Thread.sleep(2000);
+
+            MulticastServer.multicastMessage("*** *** *** HI FROM PROCESS " + processNumber + "! *** *** ***",5040);
+            MulticastServer.multicastMessage("end", 5040);
+
+            Thread.sleep(2000);
+
+            receiveMulticastMessage(5040, "end");
+
         } catch (Exception e) {
-            System.err.println("JSON Read-in failed: " + e);
+            System.err.println("Process 1 failed: " + e);
         }
 //        for (int i = 0; i < blockchain.size(); i++) {
 //            Block block = blockchain.get(i);
@@ -188,21 +237,73 @@ class startProcess implements Runnable {
     public void startP2() {
 
         fileName = "BlockInput2.txt";
-//        createChain(processNumber);
 
         System.out.println("Hello from Process " + processNumber + "! :-)");
 
         try {
             readBlockInputFile(fileName, processNumber, blockchain);
+
+            receiveMulticastMessage(5040, "end");
+
+            Thread.sleep(2000);
+
+            receiveMulticastMessage(5040, "end");
+
+            Thread.sleep(2000);
+
+            MulticastServer.multicastMessage("*** *** *** HI FROM PROCESS " + processNumber + "! *** *** ***",5040);
+            MulticastServer.multicastMessage("end", 5040);
+
+
         } catch (Exception e) {
-            System.err.println("JSON Read-in failed: " + e);
+            System.err.println("Process 2 failed: " + e);
         }
 
     }
 
-    /*TODO: Add this method to readBlockInputFile method
-        Need way to reference block before it or state if it's first block on chain
-    *  SEE: General, second bullet point*/
+    /*TODO COMMENT: Detailed comments, change variable names, and link source */
+
+    private void receiveMulticastMessage(int port, String finalMessage) throws IOException {
+        byte[] buffer = new byte[1024];
+        MulticastSocket socket = new MulticastSocket(port);
+        InetAddress group = InetAddress.getByName("230.0.0.0");
+        socket.joinGroup(group);
+
+        try {
+            while (true) {
+
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+                socket.receive(packet);
+
+                String msg = new String(packet.getData(), packet.getOffset(), packet.getLength());
+
+                if (finalMessage.equals(msg)) {
+                    System.out.println("Exiting...");
+                    break;
+                }
+
+                //Print statement check
+
+                System.out.println("Waiting to receive multicast message...");
+
+                //Print statement check
+
+                System.out.println("Multicast message received! -->" + msg);
+
+                /*TODO: We can change the statement in this if to break out of this loop whenever we want. */
+
+            }
+
+        } catch (IOException e) {
+            System.err.println("Multicast receive interrupted");
+            e.printStackTrace();
+        }
+
+        socket.leaveGroup(group);
+        socket.close();
+    }
+
+    /*TODO COMMENT: What does this function do, and why is it better than what I had? */
 
     private Block createBlock(Block previousBlock, ArrayList<Block> blockchain) {
 
@@ -303,15 +404,8 @@ class startProcess implements Runnable {
 
             while((line = br.readLine()) != null) {
 
-                /*TODO: So this already assumes blocks to be created inside blockchain, I need to call createBlock() instead
-                *  and pass in the myBlockchain parameter. I do this because while there are lines to read, a new block
-                *  must be created and appended to the blockchain. What do I pass in for previous block parameter?
-                *  I might have to change a thing or two so that when blockFromChainIndex is 0, the previous block is null
-                *  and add that functionality to my createBlock() that if it's null, it's the first block.
-                *
-                *TODO: TEST THE FOLLOWING CHANGE: */
-                
-//                Block myBlock = myBlockchain.get(blockFromChainIndex);
+                /*TODO COMMENT: What createBlock() does in this scenario*/
+
                 Block myBlock;
 
                 if (blockFromChainIndex == 0) {
@@ -322,6 +416,10 @@ class startProcess implements Runnable {
 
                 /*Waits a second in between each line of the text file being read. Why? In order to try and ensure
                  * different time stamps between each block.
+                 *
+                 * Lines 320 - 362 took inspiration from Clark Elliott
+                 * https://condor.depaul.edu/~elliott/435/hw/programs/Blockchain/BlockInputG.java
+                 *
                  * TODO: Can probably be omitted when we do "work" */
 
                 try {
@@ -369,6 +467,10 @@ class startProcess implements Runnable {
             System.err.println("JSON read failed: " + e);
         }
 
+    }
+
+    private void writeBlockOutputFile(ArrayList<Block> myBlockchain) throws Exception {
+
         //Now we write information to the JSON
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -378,16 +480,44 @@ class startProcess implements Runnable {
 
         System.out.println("String list is: " + json);
 
+        /*If we needed to write to different JSON's, we'd just have to let this function accept it as a parameter
+        * and then pass the parameter into FileWriter. However, for the scope of this assignment, that is unnecessary.*/
+
         try (FileWriter writer = new FileWriter("BlockchainLedger.json")){
             gson.toJson(blockchain, writer);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
 
+}
+
+/*TODO COMMENT: What parts of the source did I use and not use? What did I change (InetAddress.getLocalHost())
+    Remember to heavily comment each part, explaining what's going on
+
+   https://www.developer.com/java/data/how-to-multicast-using-java-sockets.html*/
+
+class MulticastServer {
+
+    int port;
+
+    public MulticastServer(int port) {
+        this.port = port;
+    }
+
+    public static void multicastMessage(String message, int port) throws IOException {
+        DatagramSocket socket = new DatagramSocket();
+
+        //I changed this code to getLocalHost() for simplicity. I think it should work?
+        InetAddress group = InetAddress.getByName("230.0.0.0");
+        byte[] byteMessage = message.getBytes();
+
+        DatagramPacket packet = new DatagramPacket(byteMessage, byteMessage.length, group, port);
+        socket.send(packet);
+        socket.close();
+
+    }
 }
 
 class Block {
