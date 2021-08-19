@@ -1,0 +1,19 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly fp1tests, Some(a263a88e-37dd-4a4d-ac69-1204677a795c), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/fp1.scala:82:20: value qq is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m    val e = fact(5)qq[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/fp1.scala:83:18: recursive value e needs type[0m
+[0m[[0m[31merror[0m] [0m[0m    List(a,b,c,d,e)[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/fp1.scala:84:3: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: List[Int][0m
+[0m[[0m[31merror[0m] [0m[0m  }[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 0 s, completed Apr 14, 2021, 10:21:46 AM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

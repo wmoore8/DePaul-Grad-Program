@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="williams-mbp-2.lan" name="fp3tests" tests="10" errors="0" failures="1" skipped="0" time="0.033" timestamp="2021-04-28T10:18:14">
+                     <properties>
+      <property name="java.specification.version" value="15"/><property name="sun.jnu.encoding" value="UTF-8"/><property name="sun.arch.data.model" value="64"/><property name="java.vendor.url" value="https://openjdk.java.net/"/><property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/15.0.1/libexec/openjdk.jdk/Contents/Home/lib"/><property name="sun.java.command" value="/usr/local/Cellar/sbt/1.4.7/libexec/bin/sbt-launch.jar"/><property name="jdk.debug" value="release"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="java.version.date" value="2020-10-20"/><property name="java.home" value="/usr/local/Cellar/openjdk/15.0.1/libexec/openjdk.jdk/Contents/Home"/><property name="file.separator" value="/"/><property name="java.vm.compressedOopsMode" value="Zero based"/><property name="line.separator" value="
+"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="java.specification.name" value="Java Platform API Specification"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="java.runtime.version" value="15.0.1+9"/><property name="user.name" value="WillyMoore"/><property name="log4j.ignoreTCL" value="true"/><property name="file.encoding" value="UTF-8"/><property name="jnidispatch.path" value="/Users/WillyMoore/Library/Caches/JNA/temp/jna16137878150382660441.tmp"/><property name="jna.loaded" value="true"/><property name="java.io.tmpdir" value="/var/folders/tq/pff6hycn56vcr692l8r2y72c0000gn/T/"/><property name="java.version" value="15.0.1"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="java.library.path" value="/Users/WillyMoore/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/><property name="java.vendor" value="N/A"/><property name="scala.ext.dirs" value="/Users/WillyMoore/.sbt/0.13/java9-rt-ext-n_a_15_0_1"/><property name="sun.io.unicode.encoding" value="UnicodeBig"/><property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="java.class.path" value="/usr/local/Cellar/sbt/1.4.7/libexec/bin/sbt-launch.jar"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="jline.shutdownhook" value="false"/><property name="user.timezone" value="America/Chicago"/><property name="java.vm.specification.version" value="15"/><property name="os.name" value="Mac OS X"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="user.country" value="US"/><property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="sun.cpu.endian" value="little"/><property name="user.home" value="/Users/WillyMoore"/><property name="user.language" value="en"/><property name="swoval.tmpdir" value="/Users/WillyMoore/.sbt/1.0"/><property name="jline.esc.timeout" value="0"/><property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="path.separator" value=":"/><property name="os.version" value="11.2.3"/><property name="jna.nosys" value="true"/><property name="java.runtime.name" value="OpenJDK Runtime Environment"/><property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/><property name="jna.platform.library.path" value="/usr/lib:/usr/lib"/><property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/><property name="user.dir" value="/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2"/><property name="os.arch" value="x86_64"/><property name="java.vm.info" value="mixed mode, sharing"/><property name="java.vm.version" value="15.0.1+9"/><property name="java.class.version" value="59.0"/>
+    </properties>
+                     <testcase classname="fp3tests" name="EX01 - member" time="0.015">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX02 - allEqual" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX03 - stringLengths" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX04 - delete1" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX05 - delete2" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX06 - delete3" time="0.0">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX07 - removeDupes1" time="0.0">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX08 - removeDupes2" time="0.0">
+                                                 
+                                               </testcase><testcase classname="fp3tests" name="EX09 - splitAt" time="0.013">
+                                                 <failure message="(List(8),List(9, 10, 11, 12, 13, 14, 15)) did not equal (List(1, 2, 3, 4, 5, 6, 7),List(8, 9, 10, 11, 12, 13, 14, 15))" type="org.scalatest.exceptions.TestFailedException">org.scalatest.exceptions.TestFailedException: (List(8),List(9, 10, 11, 12, 13, 14, 15)) did not equal (List(1, 2, 3, 4, 5, 6, 7),List(8, 9, 10, 11, 12, 13, 14, 15))
+	at org.scalatest.Assertions.newAssertionFailedException(Assertions.scala:472)
+	at org.scalatest.Assertions.newAssertionFailedException$(Assertions.scala:471)
+	at org.scalatest.Assertions$.newAssertionFailedException(Assertions.scala:1231)
+	at org.scalatest.Assertions$AssertionsHelper.macroAssert(Assertions.scala:1295)
+	at fp3tests.$anonfun$new$9(fp3tests.scala:63)
+	at org.scalatest.OutcomeOf.outcomeOf(OutcomeOf.scala:85)
+	at org.scalatest.OutcomeOf.outcomeOf$(OutcomeOf.scala:83)
+	at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)
+	at org.scalatest.Transformer.apply(Transformer.scala:22)
+	at org.scalatest.Transformer.apply(Transformer.scala:20)
+	at org.scalatest.propspec.AnyPropSpecLike$$anon$1.apply(AnyPropSpecLike.scala:187)
+	at org.scalatest.TestSuite.withFixture(TestSuite.scala:196)
+	at org.scalatest.TestSuite.withFixture$(TestSuite.scala:195)
+	at UnitSpec.org$scalatest$concurrent$TimeLimitedTests$$super$withFixture(UnitSpec.scala:8)
+	at org.scalatest.concurrent.TimeLimitedTests.$anonfun$withFixture$3(TimeLimitedTests.scala:154)
+	at org.scalatest.enablers.Timed$$anon$1.timeoutAfter(Timed.scala:127)
+	at org.scalatest.concurrent.TimeLimits.failAfterImpl(TimeLimits.scala:239)
+	at org.scalatest.concurrent.TimeLimits.failAfterImpl$(TimeLimits.scala:233)
+	at org.scalatest.concurrent.TimeLimits$.failAfterImpl(TimeLimits.scala:305)
+	at org.scalatest.concurrent.TimeLimitedTests.withFixture(TimeLimitedTests.scala:153)
+	at org.scalatest.concurrent.TimeLimitedTests.withFixture$(TimeLimitedTests.scala:150)
+	at UnitSpec.withFixture(UnitSpec.scala:8)
+	at org.scalatest.propspec.AnyPropSpecLike.invokeWithFixture$1(AnyPropSpecLike.scala:185)
+	at org.scalatest.propspec.AnyPropSpecLike.$anonfun$runTest$1(AnyPropSpecLike.scala:197)
+	at org.scalatest.SuperEngine.runTestImpl(Engine.scala:306)
+	at org.scalatest.propspec.AnyPropSpecLike.runTest(AnyPropSpecLike.scala:197)
+	at org.scalatest.propspec.AnyPropSpecLike.runTest$(AnyPropSpecLike.scala:179)
+	at org.scalatest.propspec.AnyPropSpec.runTest(AnyPropSpec.scala:875)
+	at org.scalatest.propspec.AnyPropSpecLike.$anonfun$runTests$1(AnyPropSpecLike.scala:230)
+	at org.scalatest.SuperEngine.$anonfun$runTestsInBranch$1(Engine.scala:413)
+	at scala.collection.immutable.List.foreach(List.scala:333)
+	at org.scalatest.SuperEngine.traverseSubNodes$1(Engine.scala:401)
+	at org.scalatest.SuperEngine.runTestsInBranch(Engine.scala:396)
+	at org.scalatest.SuperEngine.runTestsImpl(Engine.scala:475)
+	at org.scalatest.propspec.AnyPropSpecLike.runTests(AnyPropSpecLike.scala:230)
+	at org.scalatest.propspec.AnyPropSpecLike.runTests$(AnyPropSpecLike.scala:229)
+	at org.scalatest.propspec.AnyPropSpec.runTests(AnyPropSpec.scala:875)
+	at org.scalatest.Suite.run(Suite.scala:1112)
+	at org.scalatest.Suite.run$(Suite.scala:1094)
+	at org.scalatest.propspec.AnyPropSpec.org$scalatest$propspec$AnyPropSpecLike$$super$run(AnyPropSpec.scala:875)
+	at org.scalatest.propspec.AnyPropSpecLike.$anonfun$run$1(AnyPropSpecLike.scala:234)
+	at org.scalatest.SuperEngine.runImpl(Engine.scala:535)
+	at org.scalatest.propspec.AnyPropSpecLike.run(AnyPropSpecLike.scala:234)
+	at org.scalatest.propspec.AnyPropSpecLike.run$(AnyPropSpecLike.scala:233)
+	at org.scalatest.propspec.AnyPropSpec.run(AnyPropSpec.scala:875)
+	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:318)
+	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:513)
+	at sbt.TestRunner.runTest$1(TestFramework.scala:139)
+	at sbt.TestRunner.run(TestFramework.scala:154)
+	at sbt.TestFramework$$anon$3$$anonfun$$lessinit$greater$1.$anonfun$apply$1(TestFramework.scala:317)
+	at sbt.TestFramework$.sbt$TestFramework$$withContextLoader(TestFramework.scala:277)
+	at sbt.TestFramework$$anon$3$$anonfun$$lessinit$greater$1.apply(TestFramework.scala:317)
+	at sbt.TestFramework$$anon$3$$anonfun$$lessinit$greater$1.apply(TestFramework.scala:317)
+	at sbt.TestFunction.apply(TestFramework.scala:329)
+	at sbt.Tests$.$anonfun$toTask$1(Tests.scala:422)
+	at sbt.std.Transform$$anon$3.$anonfun$apply$2(Transform.scala:46)
+	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+	at sbt.Execute.work(Execute.scala:291)
+	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+</failure>
+                                               </testcase><testcase classname="fp3tests" name="EX10 - allDistinct" time="0.001">
+                                                 
+                                               </testcase>
+                     <system-out><![CDATA[]]></system-out>
+                     <system-err><![CDATA[]]></system-err>
+                   </testsuite>

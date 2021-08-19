@@ -1,0 +1,44 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly fp2tests, Some(a35cc82e-c5dc-4d01-ac97-873bc2b08a06), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes ...[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/fp2.scala:225:5: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: List(_)[0m
+[0m[[0m[33mwarn[0m] [0m[0m    xs match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mfp2tests:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX01 - map[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX02 - filter[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX03 - append[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX04 - flatten[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX05 - foldLeft[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX06 - foldRight[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX07 - joinTerminateRight[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX08 - joinTerminateLeft[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- EX09 - firstNumGreaterThan[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- EX10 - firstIndexNumGreaterThan *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  scala.MatchError: List(4, 6, 8, 5) (of class scala.collection.immutable.$colon$colon)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at fp2$.firstIndexNumGreaterThan(fp2.scala:225)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at fp2tests.$anonfun$new$21(fp2tests.scala:73)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.OutcomeOf.outcomeOf(OutcomeOf.scala:85)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.OutcomeOf.outcomeOf$(OutcomeOf.scala:83)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.Transformer.apply(Transformer.scala:22)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.Transformer.apply(Transformer.scala:20)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.propspec.AnyPropSpecLike$$anon$1.apply(AnyPropSpecLike.scala:187)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.TestSuite.withFixture(TestSuite.scala:196)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.TestSuite.withFixture$(TestSuite.scala:195)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 142 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 10[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 9, failed 1, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[31merror[0m] [0m[0mFailed: Total 10, Failed 1, Errors 0, Passed 9[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	fp2tests[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtestOnly[0m) sbt.TestsFailedException: Tests unsuccessful[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 0 s, completed Apr 20, 2021, 10:29:21 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

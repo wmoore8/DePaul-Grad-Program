@@ -1,0 +1,39 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/csc447_2.13-1.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	storage$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/storage$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dynamic$Internationalization.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/dynamic$Internationalization.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	storage.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/storage.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	fp2$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/fp2$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	fp3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/fp3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dynamic$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/dynamic$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	fp1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/fp1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dynamic.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/dynamic.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	fp2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/fp2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	fp3$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/fp3$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	subtyping$otherCounter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/subtyping$otherCounter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	argpass$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/argpass$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	argpass$RefInt.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/argpass$RefInt.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	subtyping$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/subtyping$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	fp1$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/fp1$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	argpass.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/argpass.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	subtyping.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/subtyping.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	subtyping$Counter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/target/scala-2.13/classes/subtyping$Counter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

@@ -1,0 +1,19 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/argpass.scala:40:2: Missing closing brace `}` assumed here[0m
+[0m[[0m[31merror[0m] [0m[0m }[0m
+[0m[[0m[31merror[0m] [0m[0m ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/argpass.scala:53:3: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m  def refint1 (f : RefInt => Unit) : (Int, Int, Int) = {[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/argpass.scala:92:3: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m  def refint2 (f : RefInt => Unit) : (Int, Int, Int) = {[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/argpass.scala:115:3: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m  def refint3 (r : RefInt) : RefInt = {[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/argpass.scala:139:3: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m  def refint4 (r : RefInt, f : RefInt => Unit) : Boolean = {[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2/src/main/scala/argpass.scala:155:3: expected class or object definition[0m
+[0m[[0m[31merror[0m] [0m[0m  def refint5 (xs : List[RefInt]) : Unit = {[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m6 errors found[0m

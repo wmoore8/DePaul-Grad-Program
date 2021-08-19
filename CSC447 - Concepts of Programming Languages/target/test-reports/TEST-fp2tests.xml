@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="williams-mbp-2.lan" name="fp2tests" tests="10" errors="0" failures="0" skipped="0" time="0.019" timestamp="2021-04-20T22:29:52">
+                     <properties>
+      <property name="java.specification.version" value="15"/><property name="sun.jnu.encoding" value="UTF-8"/><property name="sun.arch.data.model" value="64"/><property name="java.vendor.url" value="https://openjdk.java.net/"/><property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/15.0.1/libexec/openjdk.jdk/Contents/Home/lib"/><property name="sun.java.command" value="/usr/local/Cellar/sbt/1.4.7/libexec/bin/sbt-launch.jar"/><property name="jdk.debug" value="release"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="java.version.date" value="2020-10-20"/><property name="java.home" value="/usr/local/Cellar/openjdk/15.0.1/libexec/openjdk.jdk/Contents/Home"/><property name="file.separator" value="/"/><property name="java.vm.compressedOopsMode" value="Zero based"/><property name="line.separator" value="
+"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="java.specification.name" value="Java Platform API Specification"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="java.runtime.version" value="15.0.1+9"/><property name="user.name" value="WillyMoore"/><property name="log4j.ignoreTCL" value="true"/><property name="file.encoding" value="UTF-8"/><property name="jnidispatch.path" value="/Users/WillyMoore/Library/Caches/JNA/temp/jna2013989274370021703.tmp"/><property name="jna.loaded" value="true"/><property name="java.io.tmpdir" value="/var/folders/tq/pff6hycn56vcr692l8r2y72c0000gn/T/"/><property name="java.version" value="15.0.1"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="java.library.path" value="/Users/WillyMoore/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/><property name="java.vendor" value="N/A"/><property name="scala.ext.dirs" value="/Users/WillyMoore/.sbt/0.13/java9-rt-ext-n_a_15_0_1"/><property name="sun.io.unicode.encoding" value="UnicodeBig"/><property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="java.class.path" value="/usr/local/Cellar/sbt/1.4.7/libexec/bin/sbt-launch.jar"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="jline.shutdownhook" value="false"/><property name="user.timezone" value="America/Chicago"/><property name="java.vm.specification.version" value="15"/><property name="os.name" value="Mac OS X"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="user.country" value="US"/><property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="sun.cpu.endian" value="little"/><property name="user.home" value="/Users/WillyMoore"/><property name="user.language" value="en"/><property name="swoval.tmpdir" value="/Users/WillyMoore/.sbt/1.0"/><property name="jline.esc.timeout" value="0"/><property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="scala.color" value="auto"/><property name="path.separator" value=":"/><property name="os.version" value="11.2.3"/><property name="jna.nosys" value="true"/><property name="java.runtime.name" value="OpenJDK Runtime Environment"/><property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/><property name="jna.platform.library.path" value="/usr/lib:/usr/lib"/><property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/><property name="user.dir" value="/Users/WillyMoore/Documents/College/GRADSCHOOL/Concepts PL/HW2"/><property name="os.arch" value="x86_64"/><property name="org.jline.reader.support.parsedline" value="true"/><property name="java.vm.info" value="mixed mode, sharing"/><property name="java.vm.version" value="15.0.1+9"/><property name="java.class.version" value="59.0"/>
+    </properties>
+                     <testcase classname="fp2tests" name="EX01 - map" time="0.015">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX02 - filter" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX03 - append" time="0.0">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX04 - flatten" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX05 - foldLeft" time="0.0">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX06 - foldRight" time="0.0">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX07 - joinTerminateRight" time="0.0">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX08 - joinTerminateLeft" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX09 - firstNumGreaterThan" time="0.001">
+                                                 
+                                               </testcase><testcase classname="fp2tests" name="EX10 - firstIndexNumGreaterThan" time="0.0">
+                                                 
+                                               </testcase>
+                     <system-out><![CDATA[]]></system-out>
+                     <system-err><![CDATA[]]></system-err>
+                   </testsuite>
